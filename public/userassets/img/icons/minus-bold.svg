@@ -1,0 +1,8 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+	<title>plus-bold-svg</title>
+	<style>
+		.s0 { fill: #ffffff } 
+	</style>
+	<path id="Layer" class="s0" d="m24.5 88.3h150v22.5h-150z"/>
+	<path id="Layer" class="s0" d="m183.3-212.5h22.4v150h-22.5z"/>
+</svg>
