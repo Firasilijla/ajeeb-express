@@ -3,8 +3,10 @@
 namespace App\Http\Middleware;
 
 use App\Providers\RouteServiceProvider;
-use Closure;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Role;
+use Closure;
+
 
 class RedirectIfAuthenticated
 {
@@ -21,13 +23,9 @@ class RedirectIfAuthenticated
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {
+            
             if (Auth::guard($guard)->check()) {
-                if(Auth::user()->type=="admin"){
-                    return redirect()->route('admin.admin.home');
-                }
-                if(Auth::user()->type=="user"){
-                    return redirect()->route('user.user.home');
-                }
+                return redirect()->route('admin.dashboard');  // توجيه المستخدم إلى لوحة التحكم
             }
         }
 

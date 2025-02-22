@@ -2,38 +2,34 @@
 
 namespace App\Helpers;
 
-use App\Models\Settings;
-use App\Models\Transaction;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
 
 class helper
 {
-
-    public static function Users()
+    public static function getUserCount()
     {
-
-        return User::where('is_deleted', 0)->get()->count();
+        return User::count();
     }
-    public static function Deposit()
-    {
 
-        return  Transaction::with("users")->where('type', 'LIKE', 'DEPOSIT%')->get()->count();
+    public static function getRoleCount()
+    {
+        return Role::count();
     }
-    public static function Withdrow()
+   
+    public static function getTextDirection()
     {
-
-        return  Transaction::with("users")->where('type','WITHDROW')->get()->count();
+        // التحقق من اللغة الحالية
+        return app()->getLocale() == 'ar' ? 'rtl' : 'ltr';
     }
-    public static function TRX()
-    {
 
-        return  Transaction::with("users")->where('type','TRX')->get()->count();
+    public static function getTextAlign()
+    {
+        // إذا كانت اللغة العربية يتم محاذاة النص لليمين، وإلا لليسار
+        return app()->getLocale() == 'ar' ? 'right' : 'left';
     }
-    public static function Settings()
+    public static function getCurrentLanguage()
     {
-
-        return  Settings::get()->first();
+        return app()->getLocale();
     }
 }

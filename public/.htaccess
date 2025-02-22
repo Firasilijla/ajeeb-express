@@ -1,4 +1,9 @@
 <IfModule mod_rewrite.c>
+RewriteEngine On
+
+    # هذه القاعدة تضمن الوصول إلى ملفات التخزين المخزنة بشكل صحيح
+    RewriteRule ^storage/(.*)$ storage/app/public/$1 [L]
+
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
     </IfModule>
@@ -19,3 +24,4 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+

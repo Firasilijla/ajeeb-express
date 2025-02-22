@@ -12,30 +12,10 @@ use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasRoles;
-    protected  $fillable = ['fname', 'lname','username','email', 'phone','passcode','identity', 'avatar','password','n_password','type','status','is_deleted','verify','total_amount','total_trx','total_bitcoin','is_trading'];
+    protected  $fillable = ['name', 'email', 'password', 'n_password','email_verified_at'];
 
-    public function getTypeAttribute()
+    public function favorites()
     {
-        if ($this->attributes['type'] === 2) {
-            return "user";
-        }
-        if ($this->attributes['type'] === 1) {
-            return "admin";
-        }
-    }
-
-
-    public function getIdentityAttribute()
-    {
-       return asset($this->attributes['identity']);
-    }
-    public function getAvatarAttribute()
-    {
-       return asset($this->attributes['avatar']);
-    }
-    public function transactions()
-    {
-        return $this->hasMany(Transaction::class,'user_id', 'id');
+        return $this->hasMany(Favorite::class);
     }
 }
-

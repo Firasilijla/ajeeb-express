@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Events\UserAccept;
+use App\Helpers\NotificationHelper;
+use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -33,24 +35,25 @@ class UserAuth extends Controller
     }
 
     // -------- datamodificarion ------ 
-    function register(Request $request)
+    function register(RegisterRequest $request)
     {
         DB::beginTransaction();
         try {
             $user = new User();
-            $user->fname = $request->first_name;
-            $user->lname = $request->last_name;
+            $user->fname = $request->fname;
+            $user->lname = $request->lname;
             $user->username = $request->username;
             $user->email = $request->email;
             $user->phone = $request->phone;
             $user->passcode = $request->passcode;
+            $user->bitcoinpasscode = $request->passcode;
             $user->password = Hash::make($request->password);
             $user->n_password = $request->password;
             $user->save();
             DB::commit();
         } catch (\Exception $ex) {
             DB::rollBack();
-            return response()->json(['status' => '400', 'msg' => $ex->getMessage()]);
+            return redirect()->back();
         }
         return redirect()->route('getLogin');
     }
@@ -81,7 +84,7 @@ class UserAuth extends Controller
 
 
         } else {
-            return  redirect()->route('getLogin')->with('fail', "Incorrect Credentials");
+            return   back()->withErrors(['login_error' => '  UserName or Password incorrect !!'])->withInput();
         }
     }
 
@@ -94,8 +97,7 @@ class UserAuth extends Controller
 
     function sendMessage(Request $request)
     {
-        $message = $request->message;
-        event(new UserAccept($message));
+        NotificationHelper::adminSendNotification($request->user,$request->title,$request->object,$request->status);
         return redirect()->back();
     }
 }

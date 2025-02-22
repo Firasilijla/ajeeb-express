@@ -25,10 +25,10 @@ var KTAddUser = function () {
 					KTUtil.scrollTop();
 				} else {
 					Swal.fire({
-		                text: "عذرا الحقول غير ممتلئة بشكل صحيح",
+		                text: "Sorry, looks like there are some errors detected, please try again.",
 		                icon: "error",
 		                buttonsStyling: false,
-		                confirmButtonText: "طيب ، حصلت عليه!",
+		                confirmButtonText: "Ok, got it!",
 						customClass: {
 							confirmButton: "btn font-weight-bold btn-light"
 						}
@@ -55,83 +55,52 @@ var KTAddUser = function () {
 			_formEl,
 			{
 				fields: {
-					name: {
+					firstname: {
 						validators: {
 							notEmpty: {
-								message: 'هذا الحقل مطلوب  '
+								message: 'First Name is required'
 							}
 						}
 					},
-					asker_id: {
+					lastname: {
 						validators: {
 							notEmpty: {
-								message: 'هذا الحقل مطلوب  '
+								message: 'Last Name is required'
 							}
 						}
 					},
-					bod: {
+					companyname: {
 						validators: {
 							notEmpty: {
-								message: 'هذا الحقل مطلوب  '
+								message: 'Company Name is required'
 							}
 						}
 					},
 					phone: {
 						validators: {
 							notEmpty: {
-								message: 'هذا الحقل مطلوب  '
+								message: 'Phone is required'
+							},
+							phone: {
+								country: 'US',
+								message: 'The value is not a valid US phone number. (e.g 5554443333)'
 							}
 						}
 					},
-					address_home: {
+					email: {
 						validators: {
 							notEmpty: {
-								message: 'هذا الحقل مطلوب  '
+								message: 'Email is required'
+							},
+							emailAddress: {
+								message: 'The value is not a valid email address'
 							}
 						}
 					},
-					address_state: {
+					companywebsite: {
 						validators: {
 							notEmpty: {
-								message: 'هذا الحقل مطلوب  '
-							}
-						}
-					},	building_type: {
-						validators: {
-							notEmpty: {
-								message: 'هذا الحقل مطلوب  '
-							}
-						}
-					},	leading_license: {
-						validators: {
-							notEmpty: {
-								message: 'هذا الحقل مطلوب  '
-							}
-						}
-					},	type: {
-						validators: {
-							notEmpty: {
-								message: 'هذا الحقل مطلوب  '
-							}
-						}
-					}
-					,	password: {
-						validators: {
-							notEmpty: {
-								message: 'هذا الحقل مطلوب  '
-							}
-						}
-					}
-					,	cpassword: {
-						validators: {
-							notEmpty: {
-								message: 'هذا الحقل مطلوب  '
-							}
-						}
-					},	identity: {
-						validators: {
-							notEmpty: {
-								message: 'هذا الحقل مطلوب  '
+								message: 'Website URL is required'
 							}
 						}
 					}
@@ -148,38 +117,25 @@ var KTAddUser = function () {
 			{
 				fields: {
 					// Step 2
-					marital_status: {
+					communication: {
 						validators: {
-							notEmpty: {
-								message: 'هذا الحقل مطلوب  '
+							choice: {
+								min: 1,
+								message: 'Please select at least 1 option'
 							}
 						}
 					},
-					boys_count: {
+					language: {
 						validators: {
 							notEmpty: {
-								message: 'هذا الحقل مطلوب  '
+								message: 'Please select a language'
 							}
 						}
 					},
-					family_count: {
+					timezone: {
 						validators: {
 							notEmpty: {
-								message: 'هذا الحقل مطلوب  '
-							}
-						}
-					},
-					illness_state: {
-						validators: {
-							notEmpty: {
-								message: 'هذا الحقل مطلوب  '
-							}
-						}
-					},
-					illness_description: {
-						validators: {
-							notEmpty: {
-								message: 'هذا الحقل مطلوب  '
+								message: 'Please select a timezone'
 							}
 						}
 					}
@@ -195,55 +151,41 @@ var KTAddUser = function () {
 			_formEl,
 			{
 				fields: {
-					mosq_name: {
+					address1: {
 						validators: {
 							notEmpty: {
-								message: 'هذا الحقل مطلوب  '
+								message: 'Address is required'
 							}
 						}
 					},
-					invitation_degree: {
+					postcode: {
 						validators: {
 							notEmpty: {
-								message: 'هذا الحقل مطلوب  '
+								message: 'Postcode is required'
 							}
 						}
 					},
-					date_biaa: {
+					city: {
 						validators: {
 							notEmpty: {
-								message: 'هذا الحقل مطلوب  '
+								message: 'City is required'
 							}
 						}
 					},
-					katiba: {
+					state: {
 						validators: {
 							notEmpty: {
-								message: 'هذا الحقل مطلوب  '
+								message: 'state is required'
 							}
 						}
 					},
-					asker_degree: {
+					country: {
 						validators: {
 							notEmpty: {
-								message: 'هذا الحقل مطلوب  '
+								message: 'Country is required'
 							}
 						}
 					},
-					spesific_invitation: {
-						validators: {
-							notEmpty: {
-								message: 'هذا الحقل مطلوب  '
-							}
-						}
-					},
-					grand_phone: {
-						validators: {
-							notEmpty: {
-								message: 'هذا الحقل مطلوب  '
-							}
-						}
-					}
 				},
 				plugins: {
 					trigger: new FormValidation.plugins.Trigger(),

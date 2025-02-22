@@ -162,6 +162,8 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
+        WisdomDiala\Cryptocap\Providers\CryptocapServiceProvider::class,
+
         /*
          * Package Service Providers...
          */
@@ -176,6 +178,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
+
 
     ],
 
@@ -229,7 +233,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
-        'Html' => Collective\Html\Html\Facade::class
+        'Html' => Collective\Html\Html\Facade::class,
+        'Cryptocap' => WisdomDiala\Cryptocap\Facades\Cryptocap::class,
+
     ],
 
 ];

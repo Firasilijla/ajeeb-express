@@ -20,10 +20,10 @@ class UserAccept implements ShouldBroadcast
      * @return void
      */
 
-     public $name;
-    public function __construct($name)
+     public $not_data;
+    public function __construct($nd)
     {
-        $this->name=$name;
+        $this->not_data=$nd;
     }
 
     /**

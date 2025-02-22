@@ -14,11 +14,8 @@ var KTFormRepeater = function() {
                 $(this).slideDown();
             },
 
-            hide: function (deleteElement) {       
-                if(confirm('هل تريد حذف  المؤهل العلمي?')) {
-                    $(this).slideUp(deleteElement);   
-                }            
-                             
+            hide: function (deleteElement) {                
+                $(this).slideUp(deleteElement);                 
             }   
         });
     }
@@ -36,7 +33,7 @@ var KTFormRepeater = function() {
             },
 
             hide: function(deleteElement) {                 
-                if(confirm('هل تريد حذف الدورة التدريبية?')) {
+                if(confirm('Are you sure you want to delete this element?')) {
                     $(this).slideUp(deleteElement);
                 }                                
             }      

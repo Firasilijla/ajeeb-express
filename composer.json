@@ -12,12 +12,15 @@
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "knplabs/knp-snappy": "^1.4",
         "laravel/framework": "^8.0",
         "laravel/socialite": "^5.6",
         "laravel/tinker": "^2.0",
         "laravelcollective/html": "^6.4",
         "pusher/pusher-php-server": "^7.2",
         "spatie/laravel-permission": "^5.10",
+        "stripe/stripe-php": "^12.0",
+        "wisdom-diala/cryptocap-pkg": "dev-main",
         "yajra/laravel-datatables-oracle": "^9.21"
     },
     "require-dev": {
